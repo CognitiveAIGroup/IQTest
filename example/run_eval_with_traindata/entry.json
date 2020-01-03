@@ -1,0 +1,4 @@
+{
+    "description": "specify model as model's entry file which defines:\ndef get_model_object(category: str) -> object, or defines:\ndef get_eval_cls(category: str) -> object\nget_model_object would override get_eval_cls",
+    "model": "eval_with_traindata"
+}
