@@ -1,5 +1,5 @@
 # Description
-IQTestSDK is a python package for easy testing, easy deploying your model for IQTest
+This repo is a python package for easy testing, easy deploying your model for IQTest,  visit our website: https://iqtest.pub
 
 
 # How to install
@@ -37,16 +37,13 @@ config.json in dataset shows test_suites settings.
 
 # How to use data
 ## TL;TR
-* 50GB free ftp space (including shared data)
 * upload/rename compressed file would trigger decompressing
 * upload private data to ftp://host/train_data
 * upload shared data to ftp://host/group_data (Group members cannot upload/list/delete group_data, but could use it)
   * _join/create a group to share data_
 
 ## Space for Train Data
-For every certified team, iqtest provide 50GB free space for pretrain data.   
-Use your name and password registed in iqtest.pub to login ftp://api.iqtest.pub:9001.  
-The directory name is `train_data`, and maps to ftp://api.iqtest.pub:9001/train_data
+Please signup our website as a team for more information.
 
 ## Space for Group share Data
 If your team joins a group, group_data would be shared between group members.   
