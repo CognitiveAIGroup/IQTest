@@ -35,7 +35,7 @@ def _gathering_directory(root, excludes, exclude_pattern):
 def _pack_check(path):
     config_file = os.path.join(path, CONFIG_FILE)
     if not os.path.isfile(config_file):
-        error = "%s doesn't exist" % CONFIG_FILE
+        error = "%s doesn't exist under %s" % (CONFIG_FILE, path)
         raise Exception(error)
 
     with open(config_file, "r", encoding="utf-8") as fh:
@@ -65,7 +65,7 @@ def pack_models(model_root: str, tar_file: str = None, dry: bool = False, exclud
     model_root = os.path.abspath(model_root)
     _pack_check(model_root)
 
-    if tar_file.find("/") >= 0 or tar_file.find("\\") >= 0:
+    if tar_file and (tar_file.find("/") >= 0 or tar_file.find("\\") >= 0):
         raise Exception("tar file must be a file name")
 
     if not tar_file:

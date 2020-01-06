@@ -1,10 +1,15 @@
-__version__ = "0.2.4.4"
+__version__ = "0.2.4.5"
 
 import os
 import json
+import time
 from datetime import datetime, timedelta
 import requests
 from pkg_resources import parse_version
+
+version_log = {
+    "0.2.4.5": "fix pack tar file is None exception"
+}
 
 
 def version_report():
@@ -15,6 +20,14 @@ def version_report():
     print('*%s*' % banner.center(58, ' '))
     print('*%s*' % version.center(58, ' '))
     print(split_symbol)
+
+
+def version_update_info(msg):
+    split_symbol = '*' * 80
+    print(split_symbol)
+    print('*%s*' % msg.center(78, ' '))
+    print(split_symbol)
+    time.sleep(1)
 
 
 CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".iqtest")
@@ -56,7 +69,7 @@ def update_config(config_info, absorb_origin=True):
         config_info = origin_info
 
     with open(CONFIG_FILE, "w", encoding='utf-8') as fh:
-        json.dump(config_info, fh, ensure_ascii=False)
+        json.dump(config_info, fh, indent=2, ensure_ascii=False)
 
 
 def get_sdk_info():
@@ -105,7 +118,7 @@ def version_check():
     data_version_update = LOCAL_DATA_VERSION_TMP and data_version and parse_version(
         data_version) > parse_version(LOCAL_DATA_VERSION_TMP)
     if sdk_version_update:
-        print("new sdk %s updated, please update from website" % sdk_version)
+        version_update_info("new sdk %s updated, please update from website" % sdk_version)
     if data_version_update:
         print("new date %s updated, please update from website" % data_version)
 
