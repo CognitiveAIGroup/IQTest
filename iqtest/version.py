@@ -1,4 +1,4 @@
-__version__ = "0.2.4.5"
+__version__ = "0.2.5.0"
 
 import os
 import json
@@ -8,7 +8,8 @@ import requests
 from pkg_resources import parse_version
 
 version_log = {
-    "0.2.4.5": "fix pack tar file is None exception"
+    "0.2.4.5": "fix pack tar file is None exception",
+    "0.2.5": "remove default multiprocess supporting, simplify sdk"
 }
 
 

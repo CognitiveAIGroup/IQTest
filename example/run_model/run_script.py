@@ -1,6 +1,5 @@
 import os
 import sys
-import multiprocessing
 from pprint import pprint
 
 from iqtest import *
@@ -13,8 +12,7 @@ CONFIG_FILE = os.path.join(DATA_ROOT, "config.json")
 
 
 def _mock_server_run():
-    sys.argv = [sys.argv[0], "-s", "-c", CONFIG_FILE,
-                '-w', WORK_ROOT, "-m", MODEL_ROOT]
+    sys.argv = [sys.argv[0], "-s", "-c", CONFIG_FILE, '-w', WORK_ROOT, MODEL_ROOT]
     run_model.run()
 
 
@@ -25,13 +23,8 @@ def server_mode():
     # analysis model (to collection results)
     the process is very similar in server
     """
-    p = multiprocessing.Process(name="run_eval", target=_mock_server_run)
-    p.start()
-    p.join()
-
-    # run post evaluate
-    if p.exitcode == 0:
-        eval_result.run_analysis(DATA_ROOT, WORK_ROOT, DATA_ROOT)
+    _mock_server_run()
+    eval_result.run_analysis(DATA_ROOT, WORK_ROOT, DATA_ROOT)
 
 
 def pack_model():
@@ -49,6 +42,7 @@ def client_mode():
 
 
 if __name__ == "__main__":
+    # client mode
     client_mode()
     # # server mode
     # server_mode()

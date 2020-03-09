@@ -7,7 +7,7 @@ if [ ! -d sdk ]
 then
 mkdir sdk
 fi
-cp ../../dist/iqtestsdk-0.2.4.4.tar.gz sdk
+cp ../../dist/iqtestsdk-0.2.5.0.tar.gz sdk
 docker rm model:v-slim
 docker build -t model:v-slim .
 popd

@@ -9,7 +9,6 @@ import os
 import sys
 import importlib
 import argparse
-import multiprocessing
 import json
 import stat
 from .iqtest_base import *
@@ -37,8 +36,6 @@ def _parse_arguments():
     parser.add_argument('--work-root', '-w', default=None,
                         help="output dir default is getcwd")
     parser.add_argument('--verbose', '-v', action='store_true', default=False)
-    parser.add_argument('--multi-processing', '-m', action='store_true', default=False,
-                        help="use multi programs to fast solve suites, only work with Default Eval Class")
     parser.add_argument('model_root', help="model dir")
     return parser.parse_args()
 
@@ -59,7 +56,7 @@ def run_eval(eval_obj, data_root, test_collection):
     return predict_suites
 
 
-def _load_eval_objects(entry_config, suites_config, multi_processing):
+def _load_eval_objects(entry_config, suites_config):
     # load model entry by model config setting
     with open(entry_config, "r", encoding="utf-8") as fh:
         model_entry_def = json.load(fh)["model"]
@@ -72,7 +69,7 @@ def _load_eval_objects(entry_config, suites_config, multi_processing):
     if "get_model_object" in symbols:
         for kind in suites_config:
             model = model_entry.get_model_object(kind)
-            eval_object_map[kind] = IQTestEvalDefault(model, multi_processing) if model else None
+            eval_object_map[kind] = IQTestEvalDefault(model) if model else None
     elif "get_eval_cls" in symbols:
         for kind in suites_config:
             eval_object_map[kind] = model_entry.get_eval_cls(kind)
@@ -123,7 +120,6 @@ def unsafe_run():
     work_root = os.path.abspath(os.getcwd())
     model_root = os.path.abspath(arguments.model_root)
     entry_config = os.path.join(model_root, "entry.json")
-    multi_processing = arguments.multi_processing
 
     _log("========== loading config =============")
     _log("data root:%s" % data_root)
@@ -146,7 +142,7 @@ def unsafe_run():
 
     # load eval object
     _log("========== loading eval models =============")
-    eval_object_map, global_pre_run = _load_eval_objects(entry_config, suites_config, multi_processing)
+    eval_object_map, global_pre_run = _load_eval_objects(entry_config, suites_config)
 
     _verbose_data_models(eval_object_map)
 
