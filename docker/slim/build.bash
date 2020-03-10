@@ -8,6 +8,6 @@ then
 mkdir sdk
 fi
 cp ../../dist/iqtestsdk-0.2.5.0.tar.gz sdk
-docker rm model:v-slim
-docker build -t model:v-slim .
+docker rm iqtest/model
+docker build -t iqtest/model .
 popd

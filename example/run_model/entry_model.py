@@ -1,5 +1,6 @@
 from iqtest import iqtest_base
-
+import torch
+import numpy as np
 
 class IQTestModelSample(iqtest_base.IQTestModelBase):
     def pre_run(self):
@@ -42,3 +43,9 @@ def get_model_object(category: str) -> object:
 def global_pre_run():
     """ global pre run function used to set up environment
     """
+    device = torch.device("cuda:0")
+    try:
+        data = torch.tensor(np.random.rand(10), device=device)
+        print(data)
+    except:
+        pass
