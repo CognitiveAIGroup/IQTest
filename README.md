@@ -32,8 +32,22 @@ pip install .
 * in example/run_script.py, client_mode, server_mode, pack_model provided 
 
 # Test data
+## Clone from Github
+Dataset locates under data
+## Download from Website
 Download dataset, extract to 'data'. Or extract to customized location, and specify `DATA_ROOT` in `run_script.py`. 
 config.json in dataset shows test_suites settings. 
+## Version history
+Current Version 0.2.4
+```
+    "0.1": "update data_file_name.json for test caseupdate data_file_name.answer.json for answers",
+    "0.2": "add verbal1-public.json case",
+    "0.2.1.1": "add T1-105-public.json case",
+    "0.2.1.2": "fix T1-105-public.json case",
+    "0.2.2": "update data",
+    "0.2.3": "update some data",
+    "0.2.4": "add more train data, fix inconsistency"
+```
 
 # How to use data
 ## TL;TR
