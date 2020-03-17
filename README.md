@@ -65,7 +65,7 @@ The directory name is `group_data`, and maps to ftp://api.iqtest.pub:9001/group_
 **Notation!**, Cause ftp service `chroot jail`, group members have no priviledge to list/upload/delete group_data.
 
 ## Directory structures
-When running models, uploaded datas to ftp space are readonly, only `group_data` and `train_data` are visible.   
+When running models, data uploaded to ftp space are readonly, only `group_data` and `train_data` are visible.   
 Check `run_model_with_pre_traindata` example.  
 We recommend use the same directory strucures with provided example.  
 Note: `train_data` would be prepended automatically.
@@ -91,15 +91,15 @@ Note: `train_data` would be prepended automatically.
 Directories in ftp
 ```
 .
-├── other_datas # invisible to model
+├── other_data # invisible to model
 ├── group_data  # shared
 │   └── shared_data_example.bin
 └── train_data
     └── user_train_data.bin
 ```
 
-## Compress datas
-Datas uploaded to ftp would be decompressed automatically.  
+## Compress data
+Data uploaded to ftp would be decompressed automatically.  
 `tar`, `7z` would be used for decompressing.
 * File contains .tar would be decompressed by `tar`
 * File with `.7z,.zip,.gz,.xz,.gz2` postfix would be decompressed by `7z`
