@@ -1,5 +1,0 @@
-torch==1.4.0
-torchvision==0.5.0 
-tensorflow==1.15.2
-Keras==2.3.1
-opencv-python==4.2.0.32

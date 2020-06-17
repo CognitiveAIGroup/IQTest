@@ -1,2 +1,0 @@
-recursive-include data *
-recursive-include example *.py *.json *.bin
