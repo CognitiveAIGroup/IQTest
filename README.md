@@ -46,7 +46,7 @@ Please visit our website for more details: https://iqtest.pub
     * using 7z compress directory as .7z, or tar compress directory as .tar.gz are recommended
 
 ## Compress data
-Data uploaded to ftp would be decompressed automatically.  
+Data uploaded would be decompressed automatically.  
 `tar`, `7z` would be used for decompressing.
 * File contains .tar would be decompressed by `tar`
 * File with `.7z,.zip,.gz,.xz,.gz2` postfix would be decompressed by `7z`
